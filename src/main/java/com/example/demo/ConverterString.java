@@ -7,26 +7,38 @@ import org.json.XML;
 
 public class ConverterString {
     public static String convert(String from, String to, String res) {
-        res = convertToJSON(from,res);
+        res = convertToJSON(from, res);
 
         if (to.equals("txt")) {
             res = convertFromJSONtoTXT(res);
         } else if (to.equals("csv")) {
-        } else if (to.equals("json")) {
-
+            res = convertJSONtoCSV(res);
         } else if (to.equals("xml")) {
-            JSONObject json = new JSONObject(res);
-            res = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><stats>";
-            res  += XML.toString(json) + "</stats>";
+            res = covertJSONtoXML(res);
         }
 
         return res;
     }
 
+    private static String convertJSONtoCSV(String res) {
+        res = "{\"stats\":[" + res + "]}";
+        JSONObject json = new JSONObject(res);
+        JSONArray jsonArray = json.getJSONArray("stats");
+        res = CDL.toString(jsonArray);
+        return res;
+    }
+
+    private static String covertJSONtoXML(String res) {
+        JSONObject json = new JSONObject(res);
+        res = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><stats>";
+        res += XML.toString(json) + "</stats>";
+        return res;
+    }
+
     private static String convertToJSON(String from, String res) {
-        if(from.equals("txt")){
+        if (from.equals("txt")) {
             JSONObject jsonObject = new JSONObject();
-            for(int i = 0 ;i<5;i++) {
+            for (int i = 0; i < 5; i++) {
                 int index = res.indexOf(":");
                 String key = res.substring(0, index);
                 res = res.substring(index + 1);
@@ -36,12 +48,10 @@ public class ConverterString {
                 res = res.substring(index + 1);
             }
             res = jsonObject.toString();
-        }
-        else if(from.equals("csv")){
+        } else if (from.equals("csv")) {
             JSONArray jsonArray = CDL.toJSONArray(res);
             res = jsonArray.get(0).toString();
-        }
-        else if(from.equals("xml")){
+        } else if (from.equals("xml")) {
             JSONObject jsonObject = XML.toJSONObject(res);
             res = jsonObject.getJSONObject("stats").toString();
         }
