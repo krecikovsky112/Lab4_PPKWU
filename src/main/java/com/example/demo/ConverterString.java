@@ -43,6 +43,11 @@ public class ConverterString {
                 String key = res.substring(0, index);
                 res = res.substring(index + 1);
                 index = res.indexOf("\n");
+                if(index == -1){
+                    index = res.indexOf(" ");
+                    if(index == -1)
+                        index = 0;
+                }
                 String value = res.substring(0, index);
                 jsonObject.put(key, value);
                 res = res.substring(index + 1);
