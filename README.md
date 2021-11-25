@@ -1,4 +1,4 @@
-# Lab4_PPKWU
+# API
 
 REST API to convert data from format XML, JSON, TXT, CSV to format XML, JSON, TXT, CSV.
 
@@ -52,3 +52,21 @@ Response:
    whitespaces: 2
    numbers: 2
    specialCharacters: 4
+
+# API to conversion archival datas
+REST API to convert archival data from format XML, JSON, TXT, CSV to format XML, JSON, TXT, CSV.
+
+## Usage
+
+You must send GET request to choose endpoint.
+#### Syntax
+path_to_API/{input format}/{output format}/{text}
+
+## Examples
+##### TXT -> JSON
+
+Request:
+http://localhost:8082/string_utility_controller_archival/txt/json/lowerCase:4%20upperCase:5%20whitespaces:2%20numbers:2%20specialCharacters:4
+
+Response:
+{"upperCase":"5","lowerCase":"4","numbers":"2","specialCharacters":"","whitespaces":"2"}
