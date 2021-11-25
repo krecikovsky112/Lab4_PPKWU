@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 @RequestMapping(value = "string_utility_controller_archival/")
-public class UtilityStringArchival {
+public class UtilityStringArchivalController {
 
     @GetMapping(value = "/{from}/txt/{text}", produces = {MediaType.TEXT_PLAIN_VALUE})
     String getTxtString(@PathVariable String from, @PathVariable String text) {
