@@ -12,7 +12,7 @@ path_to_API/{input format}/{output format}/{text}
 
 ## Examples:
 
-##### TXT -> CSV
+#### TXT -> CSV
 
 Request:
 ````
@@ -63,18 +63,19 @@ Response:
    numbers: 2
    specialCharacters: 4
 ````
-# API to conversion archival datas
+# API to conversion archival data
 REST API to convert archival data from format XML, JSON, TXT, CSV to format XML, JSON, TXT, CSV.
 
 ## Usage
 
-You must send GET request to choose endpoint.
+To use the API, send a GET request with data in the input and output format of the sequence given
+characters:
 #### Syntax
 ````
 path_to_API/{input format}/{output format}/{text}
 ````
 ## Examples
-##### TXT -> JSON
+#### TXT -> JSON
 
 Request:
 ````
